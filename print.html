@@ -3,7 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Development Plan - Team 815 Code Book</title>
+        <title>Team 815 Code Book</title>
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
@@ -173,15 +174,25 @@
 <li>Create commands for the subsystems, ideally within the subsystem classes themselves.</li>
 <li>Map controller inputs to commands to run.</li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h1>
+<ul>
+<li>Use the command-based programming paradigm.</li>
+<li>Create motor objects in the <code>RobotContainer</code> constructor and pass them to the subsystems that need them.
+<ul>
+<li>If multiple motors will always run in unison, use the <em>lead-follow</em> feature. Then, only pass the lead motor to the relevant subsystem.</li>
+</ul>
+</li>
+<li>Prefer to use motor subsystem-provided closed-loop functionality over the WPILib-provided <code>PIDSubsystem</code>/<code>PIDCommand</code>.</li>
+<li>If a command requires a single subsystem, create that command within the subsystem via a method.</li>
+<li>It is usually not necessary to write custom <code>Command</code> classes. Most behavior can be modeled using the preexisting command suite provided by WPILib.</li>
+<li>Prefer <code>DeferredCommand</code> over <code>ProxyCommand</code>.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next prefetch" href="02_best_practices.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -190,9 +201,6 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next prefetch" href="02_best_practices.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>
@@ -215,6 +223,11 @@
 
         <!-- Custom JS scripts -->
 
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
 
     </div>
     </body>
